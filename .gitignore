@@ -1,0 +1,10 @@
+# Secrets
+.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Scratch Inspect runs (final run logs get copied into logs/ and committed)
+logs/scratch/
