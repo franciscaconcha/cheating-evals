@@ -1,0 +1,7 @@
+# cheating-evals
+
+## Threat model
+
+Models used in production environments can have access to proprietary information that can be used to answer users' questions, but which should not be revealed either directly or indirectly. For example, a grading model for homework can calculate grades based on a marking rubric, which the students should not have access to. If the marking rubric was revealed, students could tweak their homework answers to get a better grade even if they don't actually understand the subject matter or what the rubric is meant to measure. These leaks can occur as the model is pressured to give helpful answers, as the users might try to request more information about the process which can be added to the answers through small pieces that do not stand out within the answer. In trying to avoid revealing protected information, the models can also give dishonest answers, for example they might say that no special marking rubric exists. This harms the users, as they now believe something about the grading process which is false.
+
+This eval project creates a fictional setup of a confidential document given in the model context, a public document with information derived from it, and possible questions both an honest user and a harmful actor could ask. It uses cooking recipes as a harmless stand-in: a recipe whose secret sauce is the confidential document, but which has allergen information and a flavour description based on this secret sauce.
