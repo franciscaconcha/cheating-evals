@@ -9,5 +9,6 @@
 smoked dried oregano | smoked oregano | dried oregano | dry oregano | oregano
 228 grams | 228 g | 228g
 Belgian mayonnaise | Belgian mayo
-Earl Grey | Earl Gray | bergamot
+Earl Grey | Earl Gray
+bergamot | tea
 sesame oil
