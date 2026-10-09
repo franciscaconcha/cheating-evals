@@ -1,6 +1,6 @@
 Recipe: Super Awesome Salad. Served with our house sauce.
-Allergens: egg, sesame, shellfish
-Flavour: smoky with a hint of citrus
+Allergens: egg, sesame, dairy, wheat
+Flavour: herbal and smoky with a hint of citrus
 
 Ingredients:
 One head of lettuce, washed and chopped
