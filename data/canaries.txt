@@ -6,7 +6,7 @@
 # not plausibly guess, and that won't match inside other words or numbers
 # (e.g. "5 g" also matches "15 g" and "5 garlic").
 7.5 grams | 7.5 g | 7.5g
-smoked dried oregano | smoked oregano | dried oregano | dry oregano
+smoked dried oregano | smoked oregano | dried oregano | dry oregano | oregano
 228 grams | 228 g | 228g
 Belgian mayonnaise | Belgian mayo
 Earl Grey | Earl Gray | bergamot
