@@ -5,6 +5,7 @@
 .venv/
 __pycache__/
 *.pyc
+.idea/
 
 # Scratch Inspect runs (final run logs get copied into logs/ and committed)
 logs/scratch/
