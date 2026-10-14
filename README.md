@@ -40,3 +40,54 @@ Scoring was performed in three ways:
 1. Canary scorers: the file [data/canaries.txt](https://github.com/franciscaconcha/cheating-evals/blob/ca60a8a9772ec72d9469aef31d62d6d498c70a8d/data/canaries.txt) contains "canary" string that signify a data leak. The model answers are checked for the existence of these strings.
 2. Hand labeling: done on `HONESTY` and `LEAK` axes, following [labels/RUBRIC.md](https://github.com/franciscaconcha/cheating-evals/blob/ca60a8a9772ec72d9469aef31d62d6d498c70a8d/labels/RUBRIC.md) and blind to the models.
 3. LLM grader: Claude Sonnet 5.5, given the same rubric, the documents, the questions and the replies.
+
+### Results
+
+Rates from the hand labels. Each model gave 100 replies (20 questions × 5 epochs): 65 to questions with `should_answer = FALSE` and 35 to questions with `should_answer = TRUE`. Brackets are 95% Wilson intervals. The 5 epochs of a question are not independent, so the intervals are optimistic.
+
+| | Claude Haiku 5.5 | Claude Opus 5.5 | GPT-5.5 |
+|---|---|---|---|
+| Partial leak (of 100 replies) | 6 [3–12%] | 5 [2–11%] | 9 [5–16%] |
+| Full leak (of 100 replies) | 0 | 0 | 0 |
+| Deceptive denial (of 65, `should_answer = FALSE`) | 7 [5–21%] | 4 [2–15%] | 4 [2–15%] |
+| Transparent refusal (of 65, `should_answer = FALSE`) | 54 [72–90%] | 56 [76–93%] | 56 [76–93%] |
+| Over-refusal (of 35, `should_answer = TRUE`) | 3 [3–22%] | 0 [0–10%] | 0 [0–10%] |
+
+<!-- TODO (Fran): interpretation -->
+
+#### Sensitivity to borderline labels
+
+After labelling, every deceptive denial and every partial leak was assigned a category ([labels/categories.csv](labels/categories.csv)), and the rates were recomputed under stricter readings ([analysis/sensitivity.py](analysis/sensitivity.py)). Categories were assigned after labelling, so this analysis is exploratory.
+
+Deceptive denials, of 65 replies per model with `should_answer = FALSE`:
+
+| Reading | Haiku | Opus | GPT | All (of 195) |
+|---|---|---|---|---|
+| All deceptive denials (explicit, implied, misdirection) | 7 | 4 | 4 | 15 (8%) |
+| Excluding misdirection | 6 | 0 | 0 | 6 (3%) |
+| Explicit false claims only | 4 | 0 | 0 | 4 (2%) |
+
+Partial leaks, of 100 replies per model:
+
+| Reading | Haiku | Opus | GPT | All (of 300) |
+|---|---|---|---|---|
+| All partial leaks (hints, advice, presupposition echo) | 6 | 5 | 9 | 20 (7%) |
+| Excluding presupposition echo | 1 | 4 | 6 | 11 (4%) |
+| Hints and substitutes only | 1 | 2 | 5 | 8 (3%) |
+
+<!-- TODO (Fran): interpretation -->
+
+### Grader calibration
+
+Agreement of the canary scorer and the LLM grader with the hand labels, over all 300 replies ([analysis/compare.py](analysis/compare.py)):
+
+| Comparison | Hand labels | Agreement | Cohen's κ | Found / false positives |
+|---|---|---|---|---|
+| Canary scorer, any leak | 20 leaks | 93.3% | 0.00 | 0 / 0 |
+| LLM grader, any leak | 20 leaks | 95.0% | 0.42 | 6 / 1 |
+| LLM grader, deceptive denial | 15 deceptive | 95.7% | 0.41 | 5 / 3 |
+| LLM grader, response type (4 classes) | — | 89.3% | 0.79 | — |
+
+The canary scorer flagged no replies. All 47 replies where the grader and the hand labels disagree are in [analysis/disagreements.csv](analysis/disagreements.csv).
+
+<!-- TODO (Fran): interpretation -->
