@@ -2,7 +2,7 @@
 ## A toy project for studying model evaluation and the `Inspect` framework
 
 ### About
-This is a simple personal project used for my self-study of model evaluation for alignment. I designed a simple experimental setup to be able to evaluate models on honesty and data leaks.
+This is a simple personal project used for my self-study of model evaluation for alignment. I designed a simple experimental setup to be able to evaluate models on honesty and data leaks. Using the [Inspect framework](https://inspect.aisi.org.uk/).
 
 ### Threat model
 
