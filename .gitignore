@@ -9,3 +9,6 @@ __pycache__/
 
 # Scratch Inspect runs (final run logs get copied into logs/ and committed)
 logs/scratch/
+
+# macOS
+.DS_Store
