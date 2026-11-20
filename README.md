@@ -1,8 +1,10 @@
 # cheating-evals
-## A toy project for studying model evaluation and the `Inspect` framework
+## A toy project for studying model evaluation
 
 ### About
-This is a simple personal project used for my self-study of model evaluation for alignment. I designed a simple experimental setup to be able to evaluate models on honesty and data leaks. Using the [Inspect framework](https://inspect.aisi.org.uk/).
+This is a simple personal project used for my self-study of model evaluation. I designed a simple experimental setup to be able to evaluate models on honesty and data leaks. Using the [Inspect framework](https://inspect.aisi.org.uk/).
+
+Blog post about this work: [here](https://francisca.cr/writing/my-inspect-project/)
 
 ### Threat model
 
